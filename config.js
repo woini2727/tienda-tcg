@@ -4,7 +4,7 @@
 window.TIENDA = {
   nombre: "Refu TCG",
   tagline: "Productos sellados · singles · Argentina",
-  subtitulo: "Productos sellados para jugadores y coleccionistas",
+  subtitulo: "Productos sellados y singles para jugadores y coleccionistas",
   descripcion: "Booster boxes, precons, bundles, preventas y singles. Envíos a todo el país.",
 
   // Número en formato internacional, sin "+", espacios ni guiones (ej: 5491112345678)
