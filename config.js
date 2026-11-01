@@ -11,6 +11,12 @@ window.TIENDA = {
   whatsapp: "5491100000000",
   instagram: "tu_usuario", // sin @
 
+  // Listas de singles (Moxfield)
+  singles: {
+    baratas: "https://moxfield.com/binders/xQgWnq0XSEOPni7Ay_fThw",
+    caras: "https://moxfield.com/binders/yM4DQ-CpKEubYs7r1G1v1A",
+  },
+
   // Promo por cantidad (solo aplica a productos con promo: true)
   promo: {
     descuentoPorCajaExtra: 10, // USD que se descuentan por cada caja adicional

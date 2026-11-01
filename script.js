@@ -12,6 +12,8 @@
   $$("[data-zona]").forEach((el) => (el.textContent = T.zonaRetiro));
   $$("[data-usdt]").forEach((el) => (el.textContent = T.descuentoUSDT));
   $$("[data-instagram]").forEach((el) => (el.href = `https://instagram.com/${T.instagram}`));
+  $$("[data-singles-baratas]").forEach((el) => (el.href = T.singles.baratas));
+  $$("[data-singles-caras]").forEach((el) => (el.href = T.singles.caras));
   $$("[data-instagram-handle]").forEach((el) => (el.textContent = "@" + T.instagram));
   $$("[data-whatsapp]").forEach((el) => (el.href = wa(`Hola ${T.nombre}! Quería hacer una consulta.`)));
 
