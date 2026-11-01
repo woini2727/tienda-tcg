@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tienda TCG</title>
+  <meta name="description" content="Productos sellados de juegos de cartas coleccionables en Argentina. Envíos a todo el país." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Inter:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="nav">
+    <div class="container nav__inner">
+      <a href="#top" class="brand" data-nombre>Tienda TCG</a>
+      <button class="nav__toggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
+      <nav class="nav__links">
+        <a href="#productos">Productos</a>
+        <a href="#como-comprar">Cómo comprar</a>
+        <a href="#faq">Preguntas</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container hero__inner">
+        <p class="kicker" data-tagline></p>
+        <h1 data-nombre></h1>
+        <p class="hero__sub" data-subtitulo></p>
+        <p class="hero__desc" data-descripcion></p>
+        <div class="hero__ctas">
+          <a href="#productos" class="btn btn--primary">Ver productos</a>
+          <a href="#" class="btn btn--ghost" data-instagram target="_blank" rel="noopener">Seguinos en Instagram ↗</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CATÁLOGO -->
+    <section id="productos" class="section">
+      <div class="container">
+        <p class="kicker">El catálogo</p>
+        <h2>Encontrá tu próxima caja</h2>
+        <p class="lead">Consultá stock y coordiná tu compra directamente por WhatsApp.</p>
+        <div class="filters" role="tablist"></div>
+        <div class="grid" id="catalogo"></div>
+      </div>
+    </section>
+
+    <!-- PROMO -->
+    <section class="section section--alt">
+      <div class="container promo">
+        <div>
+          <p class="kicker">Promo por cantidad</p>
+          <h2>Llevá más cajas, pagá menos</h2>
+          <p class="lead" id="promo-texto"></p>
+          <span class="badge">Promoción acumulable</span>
+          <div class="usdt">
+            <strong id="usdt-titulo"></strong>
+            <p>Se aplica después del descuento por cantidad.</p>
+          </div>
+        </div>
+        <table class="promo__table" id="promo-tabla">
+          <thead><tr><th>Cajas</th><th>Descuento</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- CÓMO COMPRAR -->
+    <section id="como-comprar" class="section">
+      <div class="container">
+        <p class="kicker">Simple y directo</p>
+        <h2>Cómo comprar</h2>
+        <ol class="steps">
+          <li><span>1</span><h3>Elegí</h3><p>Buscá el producto que querés en el catálogo.</p></li>
+          <li><span>2</span><h3>Escribinos</h3><p>Tocá “Consultar” y se abre WhatsApp con el producto ya cargado.</p></li>
+          <li><span>3</span><h3>Confirmá</h3><p>Te confirmamos stock, precio final y medio de pago.</p></li>
+          <li><span>4</span><h3>Recibí</h3><p>Coordinamos retiro o envío a tu domicilio.</p></li>
+        </ol>
+        <div class="info-cards">
+          <div class="card">
+            <h3>Envíos</h3>
+            <ul>
+              <li>Correo Argentino o Andreani a todo el país (a cargo del comprador).</li>
+              <li>Retiro en <span data-zona></span>, coordinando día y horario.</li>
+              <li>Envío por moto/Uber dentro de la zona (a cargo del comprador).</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Medios de pago</h3>
+            <ul>
+              <li>Efectivo (solo en retiro).</li>
+              <li>Transferencia bancaria en pesos.</li>
+              <li>PayPal.</li>
+              <li>USDT con <span data-usdt></span>% de descuento.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="section section--alt">
+      <div class="container narrow">
+        <p class="kicker">Dudas frecuentes</p>
+        <h2>Preguntas frecuentes</h2>
+        <details><summary>¿Hacen envíos a todo el país?</summary><p>Sí, por Correo Argentino o Andreani. El costo lo abona el comprador.</p></details>
+        <details><summary>¿Puedo retirar en persona?</summary><p>Sí, en <span data-zona></span>. Coordinamos día y horario por WhatsApp.</p></details>
+        <details><summary>¿Qué medios de pago aceptan?</summary><p>Efectivo (solo retiro), transferencia en pesos, PayPal y USDT.</p></details>
+        <details><summary>¿Cómo funciona el descuento por USDT?</summary><p>Pagando con USDT tenés un <span data-usdt></span>% extra, que se calcula después del descuento por cantidad.</p></details>
+        <details><summary>¿Puedo combinar ediciones para la promo?</summary><p>Sí, podés mezclar ediciones distintas de los productos que participan de la promo.</p></details>
+      </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section id="contacto" class="section cta">
+      <div class="container">
+        <h2>¿Ya elegiste tu próxima caja?</h2>
+        <p class="lead">Escribinos y te respondemos a la brevedad.</p>
+        <a href="#" class="btn btn--primary btn--lg" data-whatsapp target="_blank" rel="noopener">Consultar por WhatsApp</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div>
+        <strong data-nombre></strong>
+        <a href="#" data-instagram data-instagram-handle target="_blank" rel="noopener"></a>
+      </div>
+      <nav>
+        <a href="#productos">Productos</a>
+        <a href="#como-comprar">Cómo comprar</a>
+        <a href="#faq">Preguntas</a>
+        <a href="#" data-whatsapp target="_blank" rel="noopener">WhatsApp</a>
+      </nav>
+    </div>
+  </footer>
+
+  <a href="#" class="wa-float" data-whatsapp target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
+
+  <script src="config.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
