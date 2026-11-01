@@ -27,11 +27,15 @@ window.TIENDA = {
   zonaRetiro: "CABA",
 
   // Catálogo — agregá, quitá o editá productos
+  // tipo: "Play Booster Box" | "Bundle" | "Precon" | "Folio"
   // estado: "disponible" | "preventa" | "agotado"
+  // destacado: true muestra la etiqueta "Destacado" y resalta la tarjeta
+  // promo: true hace que participe de la promo por cantidad
   productos: [
-    { nombre: "Play Booster Box — Edición A", tipo: "Play Booster Box", precio: 150, estado: "disponible", promo: true, imagen: "" },
-    { nombre: "Play Booster Box — Edición B", tipo: "Play Booster Box", precio: 160, estado: "preventa", promo: true, imagen: "" },
-    { nombre: "Collector Booster Box — Edición A", tipo: "Collector Booster Box", precio: 320, estado: "disponible", promo: false, imagen: "" },
-    { nombre: "Bundle — Edición A", tipo: "Bundle", precio: 60, estado: "agotado", promo: false, imagen: "" },
+    { nombre: "Play Booster Box — Edición A", tipo: "Play Booster Box", precio: 150, estado: "disponible", destacado: true, promo: true, imagen: "" },
+    { nombre: "Play Booster Box — Edición B", tipo: "Play Booster Box", precio: 160, estado: "preventa", destacado: false, promo: true, imagen: "" },
+    { nombre: "Bundle — Edición A", tipo: "Bundle", precio: 60, estado: "disponible", destacado: false, promo: false, imagen: "" },
+    { nombre: "Precon — Mazo A", tipo: "Precon", precio: 50, estado: "disponible", destacado: true, promo: false, imagen: "" },
+    { nombre: "Folio — 9 bolsillos", tipo: "Folio", precio: 25, estado: "disponible", destacado: false, promo: false, imagen: "" },
   ],
 };

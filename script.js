@@ -28,12 +28,15 @@
     catalogo.innerHTML = "";
     lista.forEach((p) => {
       const card = document.createElement("article");
-      card.className = "product";
+      card.className = "product" + (p.destacado ? " product--destacado" : "");
       const agotado = p.estado === "agotado";
       card.innerHTML = `
         <div class="product__img">${p.imagen ? `<img src="${p.imagen}" alt="" loading="lazy">` : `<span>${p.tipo}</span>`}</div>
         <div class="product__body">
-          <span class="tag tag--${p.estado}">${estados[p.estado] || p.estado}</span>
+          <div class="tags">
+            ${p.destacado ? '<span class="tag tag--destacado">★ Destacado</span>' : ""}
+            <span class="tag tag--${p.estado}">${estados[p.estado] || p.estado}</span>
+          </div>
           <h3></h3>
           <p class="product__type"></p>
           <p class="product__price">USD ${p.precio}</p>
@@ -63,7 +66,7 @@
   // Promo
   const d = T.promo.descuentoPorCajaExtra;
   document.getElementById("promo-texto").textContent =
-    `Por cada caja adicional a partir de la primera, descontamos USD ${d} del total. Podés combinar ediciones. No aplica a Collector Booster Boxes.`;
+    `Por cada caja adicional a partir de la primera, descontamos USD ${d} del total. Podés combinar ediciones. Válido solo para Play Booster Boxes.`;
   document.getElementById("usdt-titulo").textContent = `Pagando con USDT: ${T.descuentoUSDT}% OFF extra`;
   const tbody = document.querySelector("#promo-tabla tbody");
   for (let n = 1; n <= T.promo.maxCajasTabla; n++) {
