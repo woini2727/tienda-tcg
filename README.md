@@ -1,4 +1,4 @@
-# Tienda TCG
+# Refu TCG
 
 Sitio estático (HTML + CSS + JS, sin dependencias) para vender productos sellados de juegos de cartas coleccionables, con consultas por WhatsApp.
 

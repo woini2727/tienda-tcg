@@ -2,10 +2,10 @@
 //  CONFIGURACIÓN DE LA TIENDA — editá solo este archivo
 // ============================================================
 window.TIENDA = {
-  nombre: "Tienda TCG",
-  tagline: "Productos sellados · Argentina",
+  nombre: "Refu TCG",
+  tagline: "Productos sellados · singles · Argentina",
   subtitulo: "Productos sellados para jugadores y coleccionistas",
-  descripcion: "Booster boxes, collector boxes y preventas. Envíos a todo el país.",
+  descripcion: "Booster boxes, precons, bundles, preventas y singles. Envíos a todo el país.",
 
   // Número en formato internacional, sin "+", espacios ni guiones (ej: 5491112345678)
   whatsapp: "5491100000000",
