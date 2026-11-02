@@ -78,6 +78,7 @@ h3 { font-size: 1.1rem; }
 .tag { font-size: .72rem; font-weight: 700; text-transform: uppercase; padding: 3px 10px; border-radius: 999px; }
 .tag--disponible { background: rgba(76,175,125,.15); color: var(--ok); }
 .tag--preventa { background: rgba(106,163,255,.15); color: var(--warn); }
+.tag--como-nuevo { background: rgba(167,139,250,.15); color: #b9a6ff; }
 .tag--agotado { background: rgba(138,132,150,.15); color: var(--off); }
 .tags { display: flex; flex-wrap: wrap; gap: 6px; }
 .tag--destacado { background: var(--gold); color: #1a1405; }

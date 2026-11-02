@@ -18,19 +18,26 @@
   $$("[data-whatsapp]").forEach((el) => (el.href = wa(`Hola ${T.nombre}! Quería hacer una consulta.`)));
 
   // Catálogo
-  const estados = { disponible: "Disponible", preventa: "Preventa", agotado: "Agotado" };
+  const estados = { disponible: "Disponible", preventa: "Preventa", agotado: "Agotado", "como-nuevo": "Como nuevo" };
   const catalogo = document.getElementById("catalogo");
   const filtros = document.querySelector(".filters");
-  const tipos = ["Todos", ...new Set(T.productos.map((p) => p.tipo))];
+  const tiposDe = (p) => (Array.isArray(p.tipo) ? p.tipo : [p.tipo]);
+  const tipos = ["Todos", ...new Set(T.productos.flatMap(tiposDe))];
 
   const tagsHTML = (p) =>
     (p.destacado ? '<span class="tag tag--destacado">★ Destacado</span>' : "") +
     `<span class="tag tag--${p.estado}">${estados[p.estado] || p.estado}</span>`;
   const precioTxt = (p) => (p.precio == null ? "Consultar precio" : `USD ${p.precio}`);
-  const imgHTML = (p) => (p.imagen ? `<img src="${p.imagen}" alt="${p.nombre}">` : `<span>${p.tipo}</span>`);
+  const imgHTML = (p) => (p.imagen ? `<img src="${p.imagen}" alt="${p.nombre}">` : `<span>${tiposDe(p)[0]}</span>`);
 
   function render(tipo) {
-    const lista = tipo === "Todos" ? T.productos : T.productos.filter((p) => p.tipo === tipo);
+    const filtrados = tipo === "Todos" ? T.productos : T.productos.filter((p) => tiposDe(p).includes(tipo));
+    // Destacados primero, después el resto y al final los marcados con alFinal (orden de config.js)
+    const lista = [
+      ...filtrados.filter((p) => p.destacado && !p.alFinal),
+      ...filtrados.filter((p) => !p.destacado && !p.alFinal),
+      ...filtrados.filter((p) => p.alFinal),
+    ];
     catalogo.innerHTML = "";
     lista.forEach((p) => {
       const card = document.createElement("button");
@@ -46,7 +53,7 @@
           <p class="product__price">${precioTxt(p)}</p>
         </div>`;
       card.querySelector("h3").textContent = p.nombre;
-      card.querySelector(".product__type").textContent = p.tipo;
+      card.querySelector(".product__type").textContent = tiposDe(p).join(" · ");
       card.onclick = () => abrirModal(p);
       catalogo.appendChild(card);
     });
@@ -59,7 +66,7 @@
 
   function abrirModal(p) {
     ultimoFoco = document.activeElement;
-    $("modal-type").textContent = p.tipo;
+    $("modal-type").textContent = tiposDe(p).join(" · ");
     $("modal-title").textContent = p.nombre;
     $("modal-tags").innerHTML = tagsHTML(p);
     $("modal-img").innerHTML = imgHTML(p);

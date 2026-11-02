@@ -8,7 +8,7 @@ window.TIENDA = {
   descripcion: "Booster boxes, precons, bundles, preventas y singles. Envíos a todo el país.",
 
   // Número en formato internacional, sin "+", espacios ni guiones (ej: 5491112345678)
-  whatsapp: "5491100000000",
+  whatsapp: "5491134808201",
   instagram: "tu_usuario", // sin @
 
   // Listas de singles (Moxfield)
@@ -22,14 +22,18 @@ window.TIENDA = {
   zonaRetiro: "CABA",
 
   // Catálogo — agregá, quitá o editá productos
-  // tipo: "Play Booster Box" | "Bundle" | "Precon" | "Folios"
-  // estado: "disponible" | "preventa" | "agotado"
+  // tipo: "Play Booster Box" | "Bundle" | "Precon" | "Folios" | "Secret Lair"
+  //       para que aparezca en más de un filtro, usá una lista: tipo: ["Secret Lair", "Precon"]
+  // Los productos destacados se muestran primero en cada filtro
+  // estado: "disponible" | "preventa" | "agotado" | "como-nuevo"
+  // alFinal: true lo muestra siempre al final de la lista (ej. productos usados)
   // destacado: true muestra la etiqueta "Destacado" y resalta la tarjeta
   // moxfield: link a la lista del mazo (solo precons; dejalo "" si no aplica)
   // descripcion: texto que se muestra en el detalle del producto (copia de items/.../descripcion.md)
   // precio: número en USD, o null para mostrar "Consultar precio"
   // imagen: ruta a la foto, ej. "items/play-booster-box/the-hobbit/foto.webp"
   productos: [
+    { nombre: "Secret Lair - Odds and Ends", tipo: ["Secret Lair", "Precon"], precio: 280, estado: "disponible", destacado: true, moxfield: "", descripcion: "Mazo de Commander de Secret Lair «Odds and Ends», con Yennett, Cryptic Sovereign como comandante y arte alternativo exclusivo de esta edición. Viene en su caja especial de Secret Lair.", imagen: "items/secret-lair/odds-and-ends/foto.webp" },
     { nombre: "Play Booster Box - The Hobbit", tipo: "Play Booster Box", precio: 190, estado: "disponible", destacado: false, descripcion: "Caja sellada de 30 Play Boosters de The Hobbit, el set de Universes Beyond ambientado en la Tierra Media y el primero de esa línea que es legal en Standard. Cada sobre trae 14 cartas, con al menos una foil y una rara o mítica. Incluye además una carta foil de regalo dentro de la caja. Ideal para draft, sellado o para abrir en casa.", imagen: "items/play-booster-box/the-hobbit/foto.webp?v=2" },
     { nombre: "Play Booster Box - Reality Fracture", tipo: "Play Booster Box", precio: 220, estado: "disponible", destacado: true, descripcion: "Caja sellada de 30 Play Boosters de Reality Fracture, el último set de 2026 y el cierre de la historia de Jace Beleren. Cada sobre trae al menos una foil y una rara o mítica. Ideal para draft, sellado o para abrir en casa.", imagen: "items/play-booster-box/reality-fracture/foto.webp" },
     { nombre: "Play Booster Box - Avatar: The Last Airbender", tipo: "Play Booster Box", precio: 190, estado: "disponible", destacado: false, descripcion: "Caja sellada de 30 Play Boosters de Avatar: The Last Airbender, el set de Universes Beyond basado en la serie animada. Cada sobre trae 14 cartas, con al menos una foil. Trae las mecánicas de Earthbending, Airbending, Waterbending y Firebending. Ideal para draft, sellado o para abrir en casa.", imagen: "items/play-booster-box/avatar/foto.webp" },
@@ -46,6 +50,12 @@ window.TIENDA = {
     { nombre: "Precon - Kamigawa Buckle Up", tipo: "Precon", precio: 85, estado: "disponible", destacado: false, moxfield: "", descripcion: "Mazo «Buckle Up» de Kamigawa: Neon Dynasty, en blanco y azul. Tiene a Kotori como comandante y su plan es armar una flota de vehículos y tripularlos para atacar. Mazo de Commander de 100 cartas listo para jugar, con 2 cartas legendarias foil.", imagen: "items/precon/kamigawa-buckle-up/foto.webp" },
     { nombre: "Precon - Lorwyn Blight Curse", tipo: "Precon", precio: 85, estado: "disponible", destacado: false, moxfield: "", descripcion: "Mazo «Blight Curse», en negro, rojo y verde. Su plan es drenar a tus rivales con contadores -1/-1 y armar combos con tus criaturas. Mazo de Commander de 100 cartas listo para jugar de Lorwyn Eclipsed, con 2 míticas nuevas en foil.", imagen: "items/precon/lorwyn-blight-curse/foto.webp" },
     { nombre: "Precon - Lorwyn Dance of the Elements", tipo: "Precon", precio: 85, estado: "disponible", destacado: false, moxfield: "", descripcion: "Mazo «Dance of the Elements», en los cinco colores. Su plan es invocar elementales enormes, sacrificarlos y duplicar sus efectos. Mazo de Commander de 100 cartas listo para jugar de Lorwyn Eclipsed, con 2 míticas nuevas en foil.", imagen: "items/precon/lorwyn-dance-of-the-elements/foto.webp" },
-    { nombre: "Folios - Dragon Shield", tipo: "Folios", precio: 25, estado: "disponible", destacado: false, descripcion: "Folios Dragon Shield para guardar tus cartas. Descripción de ejemplo.", imagen: "" },
+    { nombre: "Precon - Strixhaven Quandrix Unlimited", tipo: "Precon", precio: 85, estado: "disponible", destacado: false, moxfield: "", descripcion: "Mazo «Quandrix Unlimited», en verde y azul, con Zimone como comandante. Su plan es acumular contadores +1/+1 y lanzar hechizos con X cada vez más grandes. Mazo de Commander de 100 cartas listo para jugar de Secrets of Strixhaven, con 2 míticas nuevas en foil.", imagen: "items/precon/strixhaven-quandrix-unlimited/foto.webp" },
+    { nombre: "Precon - Strixhaven Espíritu de Sapiéntium", tipo: "Precon", precio: 85, estado: "disponible", destacado: false, moxfield: "", descripcion: "Mazo «Espíritu de Sapiéntium», edición en español. Su plan es aprovechar las cartas que dejan el cementerio y potenciar a tus espíritus. Mazo de Commander de 100 cartas listo para jugar de Secrets of Strixhaven, con 2 míticas nuevas en foil.", imagen: "items/precon/strixhaven-espiritu-de-sapientium/foto.webp" },
+    { nombre: "Precon - Strixhaven Influencia de Plumargéntum", tipo: "Precon", precio: 85, estado: "disponible", destacado: false, moxfield: "", descripcion: "Mazo «Influencia de Plumargéntum», edición en español. Su plan es controlar la mesa con conjuros y hacer que tus rivales se enfrenten entre sí. Mazo de Commander de 100 cartas listo para jugar de Secrets of Strixhaven, con 2 míticas nuevas en foil.", imagen: "items/precon/strixhaven-influencia-de-plumargentum/foto.webp" },
+    { nombre: "Precon - Ixalan Veloci-Ramp-Tor (usado)", tipo: "Precon", precio: 150, estado: "como-nuevo", destacado: false, alFinal: true, moxfield: "", descripcion: "Mazo de Commander con Pantlaza, Sun-Favored como comandante, en estado como nuevo. Es el mazo «Veloci-Ramp-Tor» de The Lost Caverns of Ixalan, un mazo de dinosaurios en rojo, verde y blanco. Consultanos por WhatsApp por el detalle de lo que incluye.", imagen: "items/precon/pantlaza-usado/foto.webp" },
+    { nombre: "Folios - Dragon Shield", tipo: "Folios", precio: 22, estado: "disponible", destacado: false, descripcion: "Folios Dragon Shield de 100 unidades, tamaño estándar (sirven para Magic y la mayoría de los juegos de cartas) con terminación mate. Vienen en varios colores: consultanos por WhatsApp cuáles tenemos disponibles.", imagen: "items/folios/dragon-shield/foto.webp" },
+    { nombre: "Folios - Dragon Shield Perfect Fit", tipo: "Folios", precio: 19, estado: "disponible", destacado: false, descripcion: "Folios internos Dragon Shield Perfect Fit transparentes, paquete de 100 unidades. Van ajustados a la carta y se usan debajo de un folio común (doble enfundado) para protegerla mejor del polvo y la humedad.", imagen: "items/folios/dragon-shield-perfect-fit/foto.webp" },
+    { nombre: "Folios - Dragon Shield Japanese Size", tipo: "Folios", precio: 14, estado: "disponible", destacado: false, descripcion: "Folios Dragon Shield tamaño japonés, caja de 60 unidades, color Night Blue con terminación Classic (brillante). Son más chicos que los estándar: están pensados para cartas de tamaño japonés, como las de Yu-Gi-Oh!, no para Magic.", imagen: "items/folios/dragon-shield-japanese/foto.webp" },
   ],
 };
