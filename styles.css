@@ -104,6 +104,9 @@ h3 { font-size: 1.1rem; }
 .modal__body { padding: 20px 24px 24px; display: flex; flex-direction: column; gap: 12px; }
 .modal__price { font-size: 2rem; font-weight: 800; color: var(--accent); line-height: 1; }
 .modal__desc { color: var(--muted); }
+.modal__desc.is-clamped { display: -webkit-box; -webkit-line-clamp: 3; line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.modal__more { align-self: flex-start; margin-top: -6px; background: none; border: 0; padding: 0; color: var(--accent); font: inherit; font-size: .9rem; font-weight: 700; cursor: pointer; }
+.modal__more:hover { color: var(--text); }
 @keyframes fade { from { opacity: 0; } }
 @keyframes pop { from { opacity: 0; transform: translateY(12px) scale(.98); } }
 

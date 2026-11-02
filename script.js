@@ -64,7 +64,12 @@
     $("modal-tags").innerHTML = tagsHTML(p);
     $("modal-img").innerHTML = imgHTML(p);
     $("modal-price").textContent = precioTxt(p);
-    $("modal-desc").textContent = p.descripcion || "";
+    const desc = $("modal-desc");
+    const more = $("modal-more");
+    desc.textContent = p.descripcion || "";
+    desc.classList.add("is-clamped");
+    more.setAttribute("aria-expanded", "false");
+    more.innerHTML = 'Ver más <span aria-hidden="true">▾</span>';
     const mox = $("modal-moxfield");
     mox.hidden = !p.moxfield;
     if (p.moxfield) mox.href = p.moxfield;
@@ -75,8 +80,18 @@
     cta.href = wa(agotado ? `Hola! Avisame si vuelve: ${p.nombre}` : `Hola! Quería consultar por: ${p.nombre}` + (p.precio == null ? "" : ` (USD ${p.precio})`));
     modal.hidden = false;
     document.body.classList.add("no-scroll");
+    // Mostrar "Ver más" solo si el texto supera las 3 líneas
+    more.hidden = desc.scrollHeight <= desc.clientHeight + 1;
     modal.querySelector(".modal__close").focus();
   }
+
+  $("modal-more").onclick = () => {
+    const desc = $("modal-desc");
+    const more = $("modal-more");
+    const abierto = desc.classList.toggle("is-clamped") === false;
+    more.setAttribute("aria-expanded", String(abierto));
+    more.innerHTML = abierto ? 'Ver menos <span aria-hidden="true">▴</span>' : 'Ver más <span aria-hidden="true">▾</span>';
+  };
 
   function cerrarModal() {
     modal.hidden = true;
