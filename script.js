@@ -40,7 +40,7 @@
           <h3></h3>
           <p class="product__type"></p>
           <p class="product__price">USD ${p.precio}</p>
-          ${p.promo ? '<p class="product__promo">Participa de la promo por cantidad</p>' : ""}
+          ${p.moxfield ? `<a class="product__link" href="${p.moxfield}" target="_blank" rel="noopener">Ver lista del mazo en Moxfield ↗</a>` : ""}
           <a class="btn btn--primary btn--block ${agotado ? "btn--disabled" : ""}" target="_blank" rel="noopener"
              href="${wa(`Hola! Quería consultar por: ${p.nombre} (USD ${p.precio})`)}">${agotado ? "Avisame si vuelve" : "Consultar"}</a>
         </div>`;
@@ -62,18 +62,6 @@
     filtros.appendChild(b);
   });
   render("Todos");
-
-  // Promo
-  const d = T.promo.descuentoPorCajaExtra;
-  document.getElementById("promo-texto").textContent =
-    `Por cada caja adicional a partir de la primera, descontamos USD ${d} del total. Podés combinar ediciones. Válido solo para Play Booster Boxes.`;
-  document.getElementById("usdt-titulo").textContent = `Pagando con USDT: ${T.descuentoUSDT}% OFF extra`;
-  const tbody = document.querySelector("#promo-tabla tbody");
-  for (let n = 1; n <= T.promo.maxCajasTabla; n++) {
-    const tr = document.createElement("tr");
-    tr.innerHTML = `<td>${n} ${n === 1 ? "caja" : "cajas"}</td><td>${n === 1 ? "Precio de lista" : `− USD ${(n - 1) * d}`}</td>`;
-    tbody.appendChild(tr);
-  }
 
   // Menú mobile
   const toggle = document.querySelector(".nav__toggle");

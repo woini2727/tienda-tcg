@@ -5,8 +5,8 @@ Sitio estático (HTML + CSS + JS, sin dependencias) para vender productos sellad
 ## Secciones
 
 - Hero con llamadas a la acción
-- Catálogo con filtros por tipo y botón “Consultar” (abre WhatsApp con el producto cargado)
-- Promo por cantidad + descuento por USDT
+- Catálogo con filtros por tipo, etiqueta “Destacado”, link a Moxfield en precons y botón “Consultar” (abre WhatsApp con el producto cargado)
+- Descuento por pago con USDT
 - Cómo comprar (pasos, envíos y medios de pago)
 - Preguntas frecuentes
 - Contacto
