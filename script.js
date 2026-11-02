@@ -29,7 +29,8 @@
   const tagsHTML = (p) =>
     (p.destacado ? '<span class="tag tag--destacado">★ Destacado</span>' : "") +
     `<span class="tag tag--${p.estado}">${estados[p.estado] || p.estado}</span>`;
-  const precioTxt = (p) => (p.precio == null ? "Consultar precio" : `USD ${p.precio}`);
+  const ars = (usd) => "ARS " + Math.round(usd * T.cotizacion).toLocaleString("es-AR");
+  const precioTxt = (p) => (p.precio == null ? "Consultar precio" : ars(p.precio));
   const imgHTML = (p) => (p.imagen ? `<img src="${p.imagen}" alt="${p.nombre}">` : `<span>${tiposDe(p)[0]}</span>`);
 
   function render(tipo) {
@@ -86,7 +87,7 @@
     const agotado = p.estado === "agotado";
     cta.textContent = agotado ? "Avisame si vuelve" : "Consultar por WhatsApp";
     cta.classList.toggle("btn--disabled", agotado);
-    cta.href = wa(agotado ? `Hola! Avisame si vuelve: ${p.nombre}` : `Hola! Quería consultar por: ${p.nombre}` + (p.precio == null ? "" : ` (USD ${p.precio})`));
+    cta.href = wa(agotado ? `Hola! Avisame si vuelve: ${p.nombre}` : `Hola! Quería consultar por: ${p.nombre}` + (p.precio == null ? "" : ` (${ars(p.precio)})`));
     modal.hidden = false;
     document.body.classList.add("no-scroll");
     // Mostrar "Ver más" solo si el texto supera las 3 líneas

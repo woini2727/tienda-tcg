@@ -17,6 +17,9 @@ window.TIENDA = {
     caras: "https://moxfield.com/binders/yM4DQ-CpKEubYs7r1G1v1A",
   },
 
+  // Los precios se cargan en USD y se muestran en pesos con esta cotización
+  cotizacion: 1550, // ARS por USD
+
   descuentoUSDT: 3, // % extra al pagar con USDT
 
   zonaRetiro: "Dina Huapi, Río Negro",
@@ -33,7 +36,7 @@ window.TIENDA = {
   // destacado: true muestra la etiqueta "Destacado" y resalta la tarjeta
   // moxfield: link a la lista del mazo (solo precons; dejalo "" si no aplica)
   // descripcion: texto que se muestra en el detalle del producto (copia de items/.../descripcion.md)
-  // precio: número en USD, o null para mostrar "Consultar precio"
+  // precio: número en USD (se muestra en ARS según la cotización), o null para mostrar "Consultar precio"
   // imagen: ruta a la foto, ej. "items/play-booster-box/the-hobbit/foto.webp"
   productos: [
     { nombre: "Secret Lair - Odds and Ends", tipo: ["Secret Lair", "Precon"], precio: 280, estado: "disponible", destacado: true, moxfield: "", descripcion: "Mazo de Commander de Secret Lair «Odds and Ends», con Yennett, Cryptic Sovereign como comandante y arte alternativo exclusivo de esta edición. Viene en su caja especial de Secret Lair.", imagen: "items/secret-lair/odds-and-ends/foto.webp?v=3" },
