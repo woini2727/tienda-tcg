@@ -31,6 +31,9 @@
     `<span class="tag tag--${p.estado}">${estados[p.estado] || p.estado}</span>`;
   const ars = (usd) => "ARS " + Math.round(usd * T.cotizacion).toLocaleString("es-AR");
   const precioTxt = (p) => (p.precio == null ? "Consultar precio" : ars(p.precio));
+  // ARS como precio principal y USD debajo, más chico
+  const precioHTML = (p) =>
+    p.precio == null ? "Consultar precio" : `${ars(p.precio)}<span class="price-usd">USD ${p.precio}</span>`;
   const imgHTML = (p) => (p.imagen ? `<img src="${p.imagen}" alt="${p.nombre}">` : `<span>${tiposDe(p)[0]}</span>`);
 
   function render(tipo) {
@@ -53,7 +56,7 @@
           <div class="tags">${tagsHTML(p)}</div>
           <h3></h3>
           <p class="product__type"></p>
-          <p class="product__price">${precioTxt(p)}</p>
+          <p class="product__price">${precioHTML(p)}</p>
         </div>`;
       card.querySelector("h3").textContent = p.nombre;
       card.querySelector(".product__type").textContent = tiposDe(p).join(" · ");
@@ -73,7 +76,7 @@
     $("modal-title").textContent = p.nombre;
     $("modal-tags").innerHTML = tagsHTML(p);
     $("modal-img").innerHTML = imgHTML(p);
-    $("modal-price").textContent = precioTxt(p);
+    $("modal-price").innerHTML = precioHTML(p);
     const desc = $("modal-desc");
     const more = $("modal-more");
     desc.textContent = p.descripcion || "";
@@ -87,7 +90,7 @@
     const agotado = p.estado === "agotado";
     cta.textContent = agotado ? "Avisame si vuelve" : "Consultar por WhatsApp";
     cta.classList.toggle("btn--disabled", agotado);
-    cta.href = wa(agotado ? `Hola! Avisame si vuelve: ${p.nombre}` : `Hola! Quería consultar por: ${p.nombre}` + (p.precio == null ? "" : ` (${ars(p.precio)})`));
+    cta.href = wa(agotado ? `Hola! Avisame si vuelve: ${p.nombre}` : `Hola! Quería consultar por: ${p.nombre}` + (p.precio == null ? "" : ` (${ars(p.precio)} / USD ${p.precio})`));
     modal.hidden = false;
     document.body.classList.add("no-scroll");
     // Mostrar "Ver más" solo si el texto supera las 3 líneas
