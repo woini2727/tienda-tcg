@@ -27,7 +27,7 @@
     (p.destacado ? '<span class="tag tag--destacado">★ Destacado</span>' : "") +
     `<span class="tag tag--${p.estado}">${estados[p.estado] || p.estado}</span>`;
   const precioTxt = (p) => (p.precio == null ? "Consultar precio" : `USD ${p.precio}`);
-  const imgHTML = (p) => (p.imagen ? `<img src="${p.imagen}" alt="" loading="lazy">` : `<span>${p.tipo}</span>`);
+  const imgHTML = (p) => (p.imagen ? `<img src="${p.imagen}" alt="${p.nombre}">` : `<span>${p.tipo}</span>`);
 
   function render(tipo) {
     const lista = tipo === "Todos" ? T.productos : T.productos.filter((p) => p.tipo === tipo);
