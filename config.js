@@ -26,11 +26,12 @@ window.TIENDA = {
   // estado: "disponible" | "preventa" | "agotado"
   // destacado: true muestra la etiqueta "Destacado" y resalta la tarjeta
   // moxfield: link a la lista del mazo (solo precons; dejalo "" si no aplica)
+  // descripcion: texto que se muestra en el detalle del producto
   productos: [
-    { nombre: "Play Booster Box — Edición A", tipo: "Play Booster Box", precio: 150, estado: "disponible", destacado: true, imagen: "" },
-    { nombre: "Play Booster Box — Edición B", tipo: "Play Booster Box", precio: 160, estado: "preventa", destacado: false, imagen: "" },
-    { nombre: "Bundle — Edición A", tipo: "Bundle", precio: 60, estado: "disponible", destacado: false, imagen: "" },
-    { nombre: "Precon — Mazo A", tipo: "Precon", precio: 50, estado: "disponible", destacado: true, moxfield: "https://moxfield.com", imagen: "" },
-    { nombre: "Folio — 9 bolsillos", tipo: "Folio", precio: 25, estado: "disponible", destacado: false, imagen: "" },
+    { nombre: "Play Booster Box — Edición A", tipo: "Play Booster Box", precio: 150, estado: "disponible", destacado: true, descripcion: "Caja sellada de Play Boosters. Descripción de ejemplo.", imagen: "" },
+    { nombre: "Play Booster Box — Edición B", tipo: "Play Booster Box", precio: 160, estado: "preventa", destacado: false, descripcion: "Caja sellada de Play Boosters en preventa. Descripción de ejemplo.", imagen: "" },
+    { nombre: "Bundle — Edición A", tipo: "Bundle", precio: 60, estado: "disponible", destacado: false, descripcion: "Bundle sellado. Descripción de ejemplo.", imagen: "" },
+    { nombre: "Precon — Mazo A", tipo: "Precon", precio: 50, estado: "disponible", destacado: true, moxfield: "https://moxfield.com", descripcion: "Mazo preconstruido listo para jugar. Descripción de ejemplo.", imagen: "" },
+    { nombre: "Folio — 9 bolsillos", tipo: "Folio", precio: 25, estado: "disponible", destacado: false, descripcion: "Folio para guardar tus cartas. Descripción de ejemplo.", imagen: "" },
   ],
 };

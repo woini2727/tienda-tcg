@@ -75,7 +75,6 @@
             <ul>
               <li>Efectivo (solo en retiro).</li>
               <li>Transferencia bancaria en pesos.</li>
-              <li>PayPal.</li>
               <li>USDT con <span data-usdt></span>% de descuento.</li>
             </ul>
           </div>
@@ -89,9 +88,7 @@
         <p class="kicker">Dudas frecuentes</p>
         <h2>Preguntas frecuentes</h2>
         <details><summary>¿Hacen envíos a todo el país?</summary><p>Sí, por Correo Argentino o Andreani. El costo lo abona el comprador.</p></details>
-        <details><summary>¿Puedo retirar en persona?</summary><p>Sí, en <span data-zona></span>. Coordinamos día y horario por WhatsApp.</p></details>
-        <details><summary>¿Qué medios de pago aceptan?</summary><p>Efectivo (solo retiro), transferencia en pesos, PayPal y USDT.</p></details>
-        <details><summary>¿Cómo funciona el descuento por USDT?</summary><p>Pagando con USDT tenés un <span data-usdt></span>% de descuento sobre el total.</p></details>
+        <details><summary>¿Qué medios de pago aceptan?</summary><p>Efectivo (solo retiro), transferencia en pesos y USDT.</p></details>
       </div>
     </section>
 
@@ -118,6 +115,25 @@
       </nav>
     </div>
   </footer>
+
+  <div class="modal" id="modal" hidden>
+    <div class="modal__backdrop" data-close></div>
+    <div class="modal__dialog" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <button class="modal__close" data-close aria-label="Cerrar">✕</button>
+      <div class="modal__head">
+        <p class="modal__type" id="modal-type"></p>
+        <h3 id="modal-title"></h3>
+        <div class="tags" id="modal-tags"></div>
+      </div>
+      <div class="modal__img" id="modal-img"></div>
+      <div class="modal__body">
+        <p class="modal__price" id="modal-price"></p>
+        <p class="modal__desc" id="modal-desc"></p>
+        <a class="product__link" id="modal-moxfield" target="_blank" rel="noopener" hidden>Ver lista del mazo en Moxfield ↗</a>
+        <a class="btn btn--primary btn--block" id="modal-cta" target="_blank" rel="noopener">Consultar por WhatsApp</a>
+      </div>
+    </div>
+  </div>
 
   <a href="#" class="wa-float" data-whatsapp target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
 
