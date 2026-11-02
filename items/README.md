@@ -13,7 +13,7 @@ items/
 ## Fotos
 
 - Dejá la foto original (cualquier tamaño o formato) en la carpeta del producto.
-- Se optimiza a `foto.webp`: fondo transparente, lienzo cuadrado, hasta 1000 px, calidad 85.
+- Se optimiza a `foto.webp`: se recorta el fondo y se centra en un lienzo de 1200 × 900 px (4:3), ocupando hasta el 90% del alto o del ancho, para que todos los productos se vean del mismo tamaño.
 - En `config.js`, el campo `imagen` apunta a `items/<tipo>/<producto>/foto.webp`.
 
 ## Descripciones

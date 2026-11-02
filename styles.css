@@ -68,7 +68,7 @@ h3 { font-size: 1.1rem; }
 .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 20px; }
 .product { font: inherit; color: inherit; text-align: left; cursor: pointer; padding: 0; width: 100%; background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; display: flex; flex-direction: column; transition: transform .2s, border-color .2s; }
 .product:hover { transform: translateY(-3px); border-color: var(--accent); }
-.product__img { aspect-ratio: 4/3; background: linear-gradient(135deg, var(--border), var(--card)); display: grid; place-items: center; color: var(--muted); font-family: "Cinzel", serif; text-align: center; padding: 12px; }
+.product__img { aspect-ratio: 4/3; background: linear-gradient(135deg, var(--border), var(--card)); display: grid; place-items: center; color: var(--muted); font-family: "Cinzel", serif; text-align: center; padding: 0; }
 .product__img img { width: 100%; height: 100%; object-fit: contain; }
 .product__body { padding: 18px; display: flex; flex-direction: column; gap: 6px; flex: 1; }
 .product__type { color: var(--muted); font-size: .9rem; }
@@ -110,6 +110,19 @@ h3 { font-size: 1.1rem; }
 .modal__more:hover { color: var(--text); }
 @keyframes fade { from { opacity: 0; } }
 @keyframes pop { from { opacity: 0; transform: translateY(12px) scale(.98); } }
+
+/* Singles */
+.singles { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 32px; }
+.singles__card { display: flex; flex-direction: column; gap: 10px; padding: 28px; background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); transition: transform .2s, border-color .2s; }
+.singles__card:hover { transform: translateY(-3px); border-color: var(--accent); }
+.singles__card--premium:hover { border-color: var(--gold); }
+.singles__label { align-self: flex-start; font-size: .75rem; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; padding: 4px 12px; border-radius: 999px; background: rgba(76,201,240,.15); color: var(--accent); }
+.singles__card--premium .singles__label { background: rgba(242,193,78,.15); color: var(--gold); }
+.singles__card h3 { font-size: 1.4rem; }
+.singles__card p { color: var(--muted); }
+.singles__cta { margin-top: auto; font-weight: 700; color: var(--accent); }
+.singles__card--premium .singles__cta { color: var(--gold); }
+@media (max-width: 640px) { .singles { grid-template-columns: 1fr; } }
 
 /* Steps */
 .steps { list-style: none; display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin: 36px 0; }

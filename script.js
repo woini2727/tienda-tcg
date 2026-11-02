@@ -22,7 +22,9 @@
   const catalogo = document.getElementById("catalogo");
   const filtros = document.querySelector(".filters");
   const tiposDe = (p) => (Array.isArray(p.tipo) ? p.tipo : [p.tipo]);
-  const tipos = ["Todos", ...new Set(T.productos.flatMap(tiposDe))];
+  const usadas = new Set(T.productos.flatMap(tiposDe));
+  const orden = (T.categorias || []).filter((c) => usadas.has(c));
+  const tipos = ["Todos", ...orden, ...[...usadas].filter((c) => !orden.includes(c))];
 
   const tagsHTML = (p) =>
     (p.destacado ? '<span class="tag tag--destacado">★ Destacado</span>' : "") +
