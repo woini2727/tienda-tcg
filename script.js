@@ -26,6 +26,7 @@
   const tagsHTML = (p) =>
     (p.destacado ? '<span class="tag tag--destacado">★ Destacado</span>' : "") +
     `<span class="tag tag--${p.estado}">${estados[p.estado] || p.estado}</span>`;
+  const precioTxt = (p) => (p.precio == null ? "Consultar precio" : `USD ${p.precio}`);
   const imgHTML = (p) => (p.imagen ? `<img src="${p.imagen}" alt="" loading="lazy">` : `<span>${p.tipo}</span>`);
 
   function render(tipo) {
@@ -42,7 +43,7 @@
           <div class="tags">${tagsHTML(p)}</div>
           <h3></h3>
           <p class="product__type"></p>
-          <p class="product__price">USD ${p.precio}</p>
+          <p class="product__price">${precioTxt(p)}</p>
         </div>`;
       card.querySelector("h3").textContent = p.nombre;
       card.querySelector(".product__type").textContent = p.tipo;
@@ -62,7 +63,7 @@
     $("modal-title").textContent = p.nombre;
     $("modal-tags").innerHTML = tagsHTML(p);
     $("modal-img").innerHTML = imgHTML(p);
-    $("modal-price").textContent = `USD ${p.precio}`;
+    $("modal-price").textContent = precioTxt(p);
     $("modal-desc").textContent = p.descripcion || "";
     const mox = $("modal-moxfield");
     mox.hidden = !p.moxfield;
@@ -71,7 +72,7 @@
     const agotado = p.estado === "agotado";
     cta.textContent = agotado ? "Avisame si vuelve" : "Consultar por WhatsApp";
     cta.classList.toggle("btn--disabled", agotado);
-    cta.href = wa(agotado ? `Hola! Avisame si vuelve: ${p.nombre}` : `Hola! Quería consultar por: ${p.nombre} (USD ${p.precio})`);
+    cta.href = wa(agotado ? `Hola! Avisame si vuelve: ${p.nombre}` : `Hola! Quería consultar por: ${p.nombre}` + (p.precio == null ? "" : ` (USD ${p.precio})`));
     modal.hidden = false;
     document.body.classList.add("no-scroll");
     modal.querySelector(".modal__close").focus();
