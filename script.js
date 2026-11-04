@@ -39,16 +39,19 @@
   function render(tipo) {
     const filtrados = tipo === "Todos" ? T.productos : T.productos.filter((p) => tiposDe(p).includes(tipo));
     // Destacados primero, después el resto y al final los marcados con alFinal (orden de config.js)
+    const agotado = (p) => p.estado === "agotado";
+    const final = (p) => p.alFinal || agotado(p);
     const lista = [
-      ...filtrados.filter((p) => p.destacado && !p.alFinal),
-      ...filtrados.filter((p) => !p.destacado && !p.alFinal),
-      ...filtrados.filter((p) => p.alFinal),
+      ...filtrados.filter((p) => p.destacado && !final(p)),
+      ...filtrados.filter((p) => !p.destacado && !final(p)),
+      ...filtrados.filter((p) => p.alFinal && !agotado(p)),
+      ...filtrados.filter(agotado),
     ];
     catalogo.innerHTML = "";
     lista.forEach((p) => {
       const card = document.createElement("button");
       card.type = "button";
-      card.className = "product" + (p.destacado ? " product--destacado" : "");
+      card.className = "product" + (p.destacado ? " product--destacado" : "") + (p.estado === "agotado" ? " product--agotado" : "");
       card.setAttribute("aria-label", `Ver detalle de ${p.nombre}`);
       card.innerHTML = `
         <div class="product__img">${imgHTML(p)}</div>
@@ -85,7 +88,11 @@
     more.innerHTML = 'Ver más <span aria-hidden="true">▾</span>';
     const mox = $("modal-moxfield");
     mox.hidden = !p.moxfield;
-    if (p.moxfield) mox.href = p.moxfield;
+    if (p.moxfield) {
+      mox.href = p.moxfield;
+      const sitio = /moxfield\.com/.test(p.moxfield) ? " en Moxfield" : /secretlair\.wizards\.com/.test(p.moxfield) ? " en Secret Lair" : /mtggoldfish\.com/.test(p.moxfield) ? " en MTGGoldfish" : /magic\.wizards\.com/.test(p.moxfield) ? " en Wizards" : "";
+      mox.textContent = `Ver lista del mazo${sitio} ↗`;
+    }
     const cta = $("modal-cta");
     const agotado = p.estado === "agotado";
     cta.textContent = agotado ? "Avisame si vuelve" : "Consultar por WhatsApp";
