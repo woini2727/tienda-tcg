@@ -7,13 +7,21 @@
   <meta name="description" content="Productos sellados de juegos de cartas coleccionables en Argentina. Envíos a todo el país." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Inter:wght@400;500;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=9" />
+  <link rel="stylesheet" href="styles.css?v=10" />
+  <script>
+    // Aplica el tema guardado (o el del sistema) antes de pintar la página
+    (function () {
+      var t = null;
+      try { t = localStorage.getItem("tema"); } catch (e) {}
+      if (t !== "light" && t !== "dark") t = window.matchMedia && matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+      document.documentElement.setAttribute("data-theme", t);
+    })();
+  </script>
 </head>
 <body>
   <header class="nav">
     <div class="container nav__inner">
       <a href="#top" class="brand" data-nombre>Refu TCG</a>
-      <button class="nav__toggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
       <nav class="nav__links">
         <a href="#productos">Productos</a>
         <a href="#singles">Singles</a>
@@ -21,6 +29,14 @@
         <a href="#faq">Preguntas</a>
         <a href="#contacto">Contacto</a>
       </nav>
+      <div class="nav__actions">
+        <button class="theme-switch" type="button" role="switch" aria-checked="false" aria-label="Tema claro">
+          <span class="theme-switch__icon theme-switch__icon--moon" aria-hidden="true">☾</span>
+          <span class="theme-switch__icon theme-switch__icon--sun" aria-hidden="true">☀</span>
+          <span class="theme-switch__thumb" aria-hidden="true"></span>
+        </button>
+        <button class="nav__toggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
+      </div>
     </div>
   </header>
 
@@ -163,6 +179,6 @@
   <a href="#" class="wa-float" data-whatsapp target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
 
   <script src="config.js?v=25"></script>
-  <script src="script.js?v=9"></script>
+  <script src="script.js?v=10"></script>
 </body>
 </html>

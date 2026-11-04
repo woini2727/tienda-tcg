@@ -130,6 +130,20 @@
   });
   render("Todos");
 
+  // Switch de tema claro / oscuro
+  const sw = document.querySelector(".theme-switch");
+  const aplicarTema = (t) => {
+    document.documentElement.setAttribute("data-theme", t);
+    sw.setAttribute("aria-checked", String(t === "light"));
+    sw.setAttribute("aria-label", t === "light" ? "Cambiar a tema oscuro" : "Cambiar a tema claro");
+  };
+  aplicarTema(document.documentElement.getAttribute("data-theme") || "dark");
+  sw.onclick = () => {
+    const t = document.documentElement.getAttribute("data-theme") === "light" ? "dark" : "light";
+    aplicarTema(t);
+    try { localStorage.setItem("tema", t); } catch (e) {}
+  };
+
   // Menú mobile
   const toggle = document.querySelector(".nav__toggle");
   const links = document.querySelector(".nav__links");
