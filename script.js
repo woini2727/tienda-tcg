@@ -48,6 +48,7 @@
       ...filtrados.filter(agotado),
     ];
     catalogo.innerHTML = "";
+    filasMostradas = T.filasVisibles || 5;
     lista.forEach((p) => {
       const card = document.createElement("button");
       card.type = "button";
@@ -66,7 +67,24 @@
       card.onclick = () => abrirModal(p);
       catalogo.appendChild(card);
     });
+    limitarFilas();
   }
+
+  // "Ver más": muestra de a N filas según cuántas columnas entran en pantalla
+  const verMas = document.getElementById("ver-mas");
+  let filasMostradas = T.filasVisibles || 5;
+  const columnas = () => getComputedStyle(catalogo).gridTemplateColumns.split(" ").filter(Boolean).length || 1;
+  function limitarFilas() {
+    const cards = [...catalogo.children];
+    const max = columnas() * filasMostradas;
+    cards.forEach((c, i) => (c.hidden = i >= max));
+    verMas.hidden = cards.length <= max;
+  }
+  verMas.onclick = () => {
+    filasMostradas += T.filasVisibles || 5;
+    limitarFilas();
+  };
+  window.addEventListener("resize", limitarFilas);
 
   // Modal de detalle
   const modal = document.getElementById("modal");

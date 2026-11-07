@@ -144,6 +144,11 @@ body, .nav, .product, .card, .modal__dialog, .singles__card { transition: backgr
 .product--agotado .product__img img { filter: grayscale(1); opacity: .55; }
 .product--agotado .product__price { color: var(--muted); }
 
+.product[hidden] { display: none; }
+.ver-mas { display: flex; justify-content: center; margin-top: 32px; }
+.ver-mas .btn[hidden] { display: none; }
+.ver-mas .btn { font: inherit; font-weight: 700; color: var(--text); background: var(--card); cursor: pointer; }
+
 /* Modal */
 .no-scroll { overflow: hidden; }
 .modal[hidden] { display: none; }
