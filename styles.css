@@ -234,8 +234,8 @@ details p { color: var(--muted); margin-top: 10px; }
 /* Hero con foto de fondo (img/hero-banner) */
 .hero { position: relative; min-height: 560px; display: flex; align-items: center; padding: 100px 0; color: #fff;
   background-color: #2c5f86;
-  background-image: linear-gradient(90deg, rgba(6,18,30,.78) 0%, rgba(6,18,30,.55) 35%, rgba(6,18,30,.1) 62%, rgba(6,18,30,0) 100%), url("img/hero-banner.jpg?v=1");
-  background-image: linear-gradient(90deg, rgba(6,18,30,.78) 0%, rgba(6,18,30,.55) 35%, rgba(6,18,30,.1) 62%, rgba(6,18,30,0) 100%), image-set(url("img/hero-banner.webp?v=1") type("image/webp"), url("img/hero-banner.jpg?v=1") type("image/jpeg"));
+  background-image: linear-gradient(90deg, rgba(6,18,30,.78) 0%, rgba(6,18,30,.55) 35%, rgba(6,18,30,.1) 62%, rgba(6,18,30,0) 100%), url("img/hero-banner.jpg?v=2");
+  background-image: linear-gradient(90deg, rgba(6,18,30,.78) 0%, rgba(6,18,30,.55) 35%, rgba(6,18,30,.1) 62%, rgba(6,18,30,0) 100%), image-set(url("img/hero-banner.webp?v=2") type("image/webp"), url("img/hero-banner.jpg?v=2") type("image/jpeg"));
   background-position: center 60%; background-size: cover; background-repeat: no-repeat; }
 .hero .kicker { color: #f2c14e; }
 .hero h1, .hero .hero__sub { color: #fff; text-shadow: 0 2px 18px rgba(0,0,0,.35); }
@@ -245,6 +245,6 @@ details p { color: var(--muted); margin-top: 10px; }
 .hero .btn--ghost:hover { border-color: #fff; }
 @media (max-width: 640px) {
   .hero { min-height: 0; padding: 72px 0 340px;
-    background-image: linear-gradient(180deg, rgba(6,18,30,.82) 0%, rgba(6,18,30,.6) 50%, rgba(6,18,30,0) 78%), url("img/hero-banner.jpg?v=1"), linear-gradient(180deg,#1d3a5c,#5e93c9 70%);
+    background-image: linear-gradient(180deg, rgba(6,18,30,.82) 0%, rgba(6,18,30,.6) 50%, rgba(6,18,30,0) 78%), url("img/hero-banner.jpg?v=2"), linear-gradient(180deg,#1d3a5c,#5e93c9 70%);
     background-position: center, 65% 100%, center; background-size: auto, auto 420px, auto; }
 }
