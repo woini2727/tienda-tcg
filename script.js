@@ -1,6 +1,38 @@
 (function () {
   const T = window.TIENDA;
   const $$ = (s) => document.querySelectorAll(s);
+  // ---- Analítica (GA4 / GTM / Clarity) ----
+  const A = T.analytics || {};
+  window.dataLayer = window.dataLayer || [];
+  window.gtag = window.gtag || function () { window.dataLayer.push(arguments); };
+  const cargar = (src) => { const sc = document.createElement("script"); sc.async = true; sc.src = src; document.head.appendChild(sc); };
+  if (A.gtm) {
+    window.dataLayer.push({ "gtm.start": Date.now(), event: "gtm.js" });
+    cargar(`https://www.googletagmanager.com/gtm.js?id=${A.gtm}`);
+  } else if (A.ga4) {
+    cargar(`https://www.googletagmanager.com/gtag/js?id=${A.ga4}`);
+    gtag("js", new Date());
+    gtag("config", A.ga4);
+  }
+  if (A.clarity) {
+    window.clarity = window.clarity || function () { (window.clarity.q = window.clarity.q || []).push(arguments); };
+    cargar(`https://www.clarity.ms/tag/${A.clarity}`);
+  }
+  // Envía un evento a GA4 (directo) o a GTM (vía dataLayer)
+  const track = (evento, params = {}) => {
+    try {
+      if (A.gtm) window.dataLayer.push({ event: evento, ...params });
+      else gtag("event", evento, params);
+      if (window.clarity && A.clarity) window.clarity("event", evento);
+    } catch (e) {}
+  };
+  const itemGA = (p) => ({
+    item_name: p.nombre,
+    item_category: (Array.isArray(p.tipo) ? p.tipo : [p.tipo]).join(" / "),
+    price: p.precio == null ? undefined : p.precio,
+    currency: "USD",
+  });
+
   const wa = (msg) => `https://wa.me/${T.whatsapp}?text=${encodeURIComponent(msg)}`;
 
   // Textos generales
@@ -16,6 +48,9 @@
   $$("[data-singles-caras]").forEach((el) => (el.href = T.singles.caras));
   $$("[data-instagram-handle]").forEach((el) => (el.textContent = "@" + T.instagram));
   $$("[data-whatsapp]").forEach((el) => (el.href = wa(`Hola ${T.nombre}! Quería hacer una consulta.`)));
+  $$("[data-whatsapp]").forEach((el) => el.addEventListener("click", () => track("consulta_whatsapp", { origen: el.className || "general" })));
+  $$("[data-singles-baratas]").forEach((el) => el.addEventListener("click", () => track("ver_singles", { lista: "economicos", origen: el.className })));
+  $$("[data-singles-caras]").forEach((el) => el.addEventListener("click", () => track("ver_singles", { lista: "premium", origen: el.className })));
 
   // Catálogo
   const estados = { disponible: "Disponible", preventa: "Preventa", agotado: "Agotado", "como-nuevo": "Como nuevo" };
@@ -64,7 +99,10 @@
         </div>`;
       card.querySelector("h3").textContent = p.nombre;
       card.querySelector(".product__type").textContent = tiposDe(p).join(" · ");
-      card.onclick = () => abrirModal(p);
+      card.onclick = () => {
+        track("select_item", { item_list_name: tipo, items: [itemGA(p)] });
+        abrirModal(p);
+      };
       catalogo.appendChild(card);
     });
     limitarFilas();
@@ -81,6 +119,7 @@
     verMas.hidden = cards.length <= max;
   }
   verMas.onclick = () => {
+    track("ver_mas_productos", { filas: filasMostradas });
     filasMostradas += T.filasVisibles || 5;
     limitarFilas();
   };
@@ -116,6 +155,9 @@
     cta.textContent = agotado ? "Avisame si vuelve" : "Consultar por WhatsApp";
     cta.classList.toggle("btn--disabled", agotado);
     cta.href = wa(agotado ? `Hola! Avisame si vuelve: ${p.nombre}` : `Hola! Quería consultar por: ${p.nombre}` + (p.precio == null ? "" : ` (${ars(p.precio)} / USD $${p.precio})`));
+    track("view_item", { currency: "USD", value: p.precio || 0, items: [itemGA(p)] });
+    cta.onclick = () => track(agotado ? "avisame_si_vuelve" : "consulta_whatsapp", { currency: "USD", value: p.precio || 0, items: [itemGA(p)], producto: p.nombre });
+    mox.onclick = () => track("ver_lista_mazo", { producto: p.nombre, destino: p.moxfield });
     modal.hidden = false;
     document.body.classList.add("no-scroll");
     // Mostrar "Ver más" solo si el texto supera las 3 líneas
@@ -147,6 +189,7 @@
     b.textContent = t;
     b.className = "chip" + (i === 0 ? " is-active" : "");
     b.onclick = () => {
+      track("filtro_categoria", { categoria: t });
       filtros.querySelectorAll(".chip").forEach((c) => c.classList.remove("is-active"));
       b.classList.add("is-active");
       render(t);
