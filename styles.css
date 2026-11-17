@@ -172,7 +172,7 @@ body, .nav, .product, .card, .modal__dialog, .singles__card { transition: backgr
 @keyframes pop { from { opacity: 0; transform: translateY(12px) scale(.98); } }
 
 /* Singles */
-.singles { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 32px; }
+.singles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 32px; }
 .singles__card { display: flex; flex-direction: column; gap: 10px; padding: 28px; background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); transition: transform .2s, border-color .2s; }
 .singles__card:hover { transform: translateY(-3px); border-color: var(--accent); }
 .singles__card--premium:hover { border-color: var(--gold); }
@@ -182,6 +182,10 @@ body, .nav, .product, .card, .modal__dialog, .singles__card { transition: backgr
 .singles__card p { color: var(--muted); }
 .singles__cta { margin-top: auto; font-weight: 700; color: var(--accent); }
 .singles__card--premium .singles__cta { color: var(--gold); }
+.singles__card--tierras:hover { border-color: var(--ok); }
+.singles__card--tierras .singles__label { background: rgba(76,175,125,.15); color: var(--ok); }
+.singles__card--tierras .singles__cta { color: var(--ok); }
+@media (max-width: 960px) { .singles { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 640px) { .singles { grid-template-columns: 1fr; } }
 
 /* Steps */

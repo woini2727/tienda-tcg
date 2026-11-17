@@ -14,7 +14,8 @@ window.TIENDA = {
   // Listas de singles (Moxfield)
   singles: {
     baratas: "https://moxfield.com/binders/xQgWnq0XSEOPni7Ay_fThw",
-    caras: "https://moxfield.com/binders/yM4DQ-CpKEubYs7r1G1v1A",
+    caras: "https://moxfield.com/binders/TUEHCkGwlECRJ5g8PZqPbQ", // más de USD 1
+    tierras: "https://moxfield.com/binders/xC2a2EzTjUanPMoBQW0OaA", // tierras full art
   },
 
   // Los precios se cargan en USD y se muestran en pesos con esta cotización

@@ -46,11 +46,13 @@
   $$("[data-instagram]").forEach((el) => (el.href = `https://instagram.com/${T.instagram}`));
   $$("[data-singles-baratas]").forEach((el) => (el.href = T.singles.baratas));
   $$("[data-singles-caras]").forEach((el) => (el.href = T.singles.caras));
+  $$("[data-singles-tierras]").forEach((el) => (el.href = T.singles.tierras));
   $$("[data-instagram-handle]").forEach((el) => (el.textContent = "@" + T.instagram));
   $$("[data-whatsapp]").forEach((el) => (el.href = wa(`Hola ${T.nombre}! Quería hacer una consulta.`)));
   $$("[data-whatsapp]").forEach((el) => el.addEventListener("click", () => track("consulta_whatsapp", { origen: el.className || "general" })));
   $$("[data-singles-baratas]").forEach((el) => el.addEventListener("click", () => track("ver_singles", { lista: "economicos", origen: el.className })));
   $$("[data-singles-caras]").forEach((el) => el.addEventListener("click", () => track("ver_singles", { lista: "premium", origen: el.className })));
+  $$("[data-singles-tierras]").forEach((el) => el.addEventListener("click", () => track("ver_singles", { lista: "tierras_full_art", origen: el.className })));
 
   // Catálogo
   const estados = { disponible: "Disponible", preventa: "Preventa", agotado: "Agotado", "como-nuevo": "Como nuevo" };
