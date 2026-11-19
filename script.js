@@ -73,8 +73,22 @@
     p.precio == null ? "Consultar precio" : `${ars(p.precio)}<span class="price-usd">USD $${p.precio}</span>`;
   const imgHTML = (p) => (p.imagen ? `<img src="${p.imagen}" alt="${p.nombre}">` : `<span>${tiposDe(p)[0]}</span>`);
 
+  // Buscador: ignora mayúsculas y tildes, busca en nombre, tipo y descripción
+  const buscar = document.getElementById("buscar");
+  const sinResultados = document.getElementById("sin-resultados");
+  const normal = (t) => (t || "").toString().normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+  let tipoActual = "Todos";
+  const coincide = (p, q) => {
+    if (!q) return true;
+    const texto = normal([p.nombre, tiposDe(p).join(" "), p.descripcion].join(" "));
+    return normal(q).split(/\s+/).filter(Boolean).every((w) => texto.includes(w));
+  };
+
   function render(tipo) {
-    const filtrados = tipo === "Todos" ? T.productos : T.productos.filter((p) => tiposDe(p).includes(tipo));
+    tipoActual = tipo;
+    const q = buscar.value.trim();
+    const filtrados = (tipo === "Todos" ? T.productos : T.productos.filter((p) => tiposDe(p).includes(tipo))).filter((p) => coincide(p, q));
+    sinResultados.hidden = filtrados.length > 0;
     // Destacados primero, después el resto y al final los marcados con alFinal (orden de config.js)
     const agotado = (p) => p.estado === "agotado";
     const final = (p) => p.alFinal || agotado(p);
@@ -199,6 +213,14 @@
     filtros.appendChild(b);
   });
   render("Todos");
+
+  let busquedaTimer;
+  buscar.addEventListener("input", () => {
+    render(tipoActual);
+    clearTimeout(busquedaTimer);
+    const q = buscar.value.trim();
+    if (q.length >= 3) busquedaTimer = setTimeout(() => track("search", { search_term: q }), 1200);
+  });
 
   // Switch de tema claro / oscuro
   const sw = document.querySelector(".theme-switch");

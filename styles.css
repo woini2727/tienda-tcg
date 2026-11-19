@@ -112,7 +112,16 @@ body, .nav, .product, .card, .modal__dialog, .singles__card { transition: backgr
 .section--alt { background: var(--bg-alt); }
 
 /* Catalog */
-.filters { display: flex; flex-wrap: wrap; gap: 8px; margin: 28px 0; }
+.catalog-bar { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin: 28px 0; }
+.filters { display: flex; flex-wrap: wrap; gap: 8px; }
+.search { position: relative; flex: 0 1 300px; margin-left: auto; }
+.search input { width: 100%; padding: 10px 16px 10px 40px; border-radius: 999px; border: 1px solid var(--border); background: var(--card); color: var(--text); font: inherit; font-size: .95rem; transition: border-color .2s, box-shadow .2s; }
+.search input::placeholder { color: var(--muted); }
+.search input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--tint-accent); }
+.search__icon { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: var(--muted); pointer-events: none; }
+.sin-resultados { text-align: center; color: var(--muted); padding: 40px 0; }
+.sin-resultados a { color: var(--accent); text-decoration: underline; }
+@media (max-width: 760px) { .search { flex-basis: 100%; margin-left: 0; } }
 .chip { background: var(--card); color: var(--muted); border: 1px solid var(--border); padding: 8px 16px; border-radius: 999px; cursor: pointer; font: inherit; font-size: .9rem; }
 .chip.is-active { background: var(--accent); color: var(--ink); border-color: var(--accent); }
 .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 20px; }
