@@ -19,7 +19,7 @@ window.TIENDA = {
   },
 
   // Los precios se cargan en USD y se muestran en pesos con esta cotización
-  cotizacion: 1550, // ARS por USD
+  cotizacion: 1600, // ARS por USD
 
   descuentoUSDT: 3, // % extra al pagar con USDT
 
